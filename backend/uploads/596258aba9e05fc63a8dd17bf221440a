@@ -1,0 +1,172 @@
+docker exec containerid mysqldump -u root --password=root portal-db > lower-portal-db.sql
+
+
+docker exec bdc3518f8aca mysqldump -u root --password=123456 localdb > D:\Databse_docker\master.sql 
+
+
+sudo docker cp wwi.bak sql1:/var/opt/mssql/backup
+
+sudo docker cp D:\Databse_docker\master.sql saildb:/var/opt/mssql/backup/master.bak
+
+
+/var/opt/mssql/backup/master.sql
+
+docker cp D:\Databse_docker\master.sql saildbs:/var/opt/mssql/backup/master.sql;
+docker cp D:\Databse_docker7\user1.sql saildbs:/var/opt/mssql/backup/user1.sql;
+docker cp D:\Databse_docker\user2.sql saildbs:/var/opt/mssql/backup/user2.sql;
+
+
+
+/var
+opt
+mssql
+backup
+master.sql;
+
+docker exec -it sql1 /opt/mssql-tools/bin/sqlcmd -S localhost `
+   -U SA -P "<YourNewStrong!Passw0rd>" `
+   -Q "RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backup/wwi.bak'"
+
+
+docker exec -it saildb /opt/mssql-tools/bin/sqlcmd -S localhost -U root -P 123456  -Q "RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backup/master.bak'"
+
+
+mysql databasename < backup.sql
+
+
+mysql --user=root --password mysql;
+
+ use localdb;
+set names utf8;
+set binary-mode 1;
+
+use sails_master;
+source /var/opt/mssql/backup/user1.sql;
+create database sails_master;
+create database `3949a21d-8aaf-457d-a5ab-707dec2a0744`; 
+create database `40a61f6e_abd0_4da1_85db_3f25916cf633`;
+
+
+mysqldump -u root p my_db --no-data --no-create-db --no-create-info --routines --triggers --skip-opt --set-gtid-purged=OFF > db_objects.sql
+
+mysql -u root --password  localdb  > /var/opt/mssql/backup/master.bak
+
+
+mysqldump -u root --password  localdb --no-data --no-create-db --no-create-info --routines --triggers --skip-opt --set-gtid-purged=OFF > /var/opt/mssql/backup/master.sql
+
+
+mysqldump -u root --password  localdb --no-data --no-create-db --no-create-info --routines --triggers --skip-opt --set-gtid-purged=OFF | Set-Content /var/opt/mssql/backup/master.bak
+
+
+
+
+
+mysql -u root --password  localdb --no-data --no-create-db --no-create-info --routines --triggers --skip-opt --set-gtid-purged=OFF | Set-Content /var/opt/mssql/backup/master.sql
+
+
+/usr/bin/mysqldump
+
+/usr/bin/mysql
+
+
+docker exec -i saildb sh -c 'exec mysql -u root  -p 123456 db1' <  D:\Databse_docker\master.sql 
+
+
+
+docker exec -i saildb  sh -c 'exec mysql -u root -p 123456 localdb' < /var/opt/mssql/backup/master.sql
+
+ mysql -u root --password  localdb  > /var/opt/mssql/backup/master.bak
+
+
+docker exec -i some-mysql sh -c 'exec mysql -u<user> -p<password> <database>' < /var/opt/mssql/backup/master.sql;
+
+
+sudo docker run −−rm −−name=sailsdb −e  −d mysql/mysql−server
+
+
+
+
+docker run −−rm −−name=sailsdb −e  −d mysql
+
+
+docker run  −−name=sailsdb  −d mysql/mysql−server
+
+
+docker run --name=sailsdb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql/mysql-server:8.0
+
+mysql -u root -p 123456 mysql -e "update User set authentication_string=password(''), plugin='mysql_native_password' where user='root'";
+
+
+update user set authentication_string=password('123456'), plugin='mysql_native_password' where user='root';
+
+ CREATE USER 'root1'@'localhost' IDENTIFIED BY '123456';
+ GRANT ALL ON *.* TO 'root1'@'localhost';
+ FLUSH PRIVILEGES;
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234567';
+FLUSH privileges;
+
+Steps:
+docker run --name=sailsdb1 mysql_native_password  -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+1) docker run --name=sailsdb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql
+2) cd /var/opt/&& mkdir mssql && cd mssql && mkdir backup;
+3) docker cp D:\Databse_docker\master.sql sailsdb:/var/opt/mssql/backup/master.sql ;
+ docker cp D:\Databse_docker\user1.sql sailsdb:/var/opt/mssql/backup/user1.sql;
+docker cp D:\Databse_docker\user2.sql sailsdb:/var/opt/mssql/backup/user2.sql;
+
+docker container mssql
+4) mysql --user=root --password mysql;
+5) set names utf8;
+6) set binary-mode 1; (it may break)
+7) create database sails_master;
+create database `3949a21d-8aaf-457d-a5ab-707dec2a0744`; 
+create database `40a61f6e_abd0_4da1_85db_3f25916cf633`;
+8) use sails_master;
+source /var/opt/mssql/backup/master.sql;
+9) use 3949a21d-8aaf-457d-a5ab-707dec2a0744;
+source /var/opt/mssql/backup/user1.sql;
+10) use 40a61f6e_abd0_4da1_85db_3f25916cf633;
+source /var/opt/mssql/backup/user2.sql;
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234567';
+
+
+CREATE USER 'user'@'172.17.0.1' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'172.17.0.1' WITH GRANT OPTION;
+flush privileges; 
+
+
+docker build -t my-account/my-image:latest .
+
+docker build -t gauravmindz/sails_dev_db:latest D:\dockerimage
+
+docker push gauravmindz/sails_dev_db:latest D:\dockerimage
+
+
+docker tag sails_dev_db:latest gauravmindz/sails_dev_db:latest
+
+
+docker push gauravmindz/sails_dev_db:latest
+
+
+
+
+docker save sailsdb:latest > sailsdb.tar
+
+docker build -t my-account/my-image:latest .
+
+
+ docker container commit sailsdb sails_dev_db:latest
+
+docker image tag sails_dev_db:latest registry-host:5000/myadmin/sails_dev_db:latest
+
+docker image push registry-host:5000/myadmin/sails_dev_db:latest
+
+
+
+ docker login
+
+docker tag example_image:latest gauravvv/example_image:latest
+docker push gauravvv/example_image:latest
